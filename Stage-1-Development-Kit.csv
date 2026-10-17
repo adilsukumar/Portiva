@@ -1,0 +1,5 @@
+Stage,Item,Quantity,Listed_INR,Source,Recommendation,Excluded_or_pending
+1,AI-Thinker ESP32-CAM OV2640 with 4 MB PSRAM,1,850,https://kspelectronics.in/product/esp32-cam-wifi-bluetooth-development-board-ov2640/,Buy for camera bench development only,Shipping and actual supplied board verification
+1,ESP32-CAM-MB Type-C CH340C programmer,1,161,https://www.flyrobo.in/esp32-cam-mb-type-c-serial-port-burner-module-with-ch340c,Buy after matching camera socket and pin layout,Shipping and header compatibility
+1,Matching USB data cable,1,,,Reuse a tested data cable or price at checkout,Price and connector match
+1,Stable regulated USB power for camera bench,1,,,Use suitable documented computer USB and programmer power or price a supply,At least 500 mA per camera seller and no brownouts

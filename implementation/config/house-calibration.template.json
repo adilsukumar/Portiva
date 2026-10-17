@@ -1,0 +1,15 @@
+{
+  "status": "UNMEASURED TEMPLATE NOT USABLE FOR NAVIGATION",
+  "units": "metres",
+  "image_size_px": [640, 480],
+  "notes": [
+    "Replace dimensions with the actual camera capture size.",
+    "Use corners on an existing flat tiled wall or another measured fixed surface. Do not install house markers.",
+    "Supply at least 12 different views with at least 12 matched corners per view.",
+    "Each view has surface_points_m as XYZ triples and image_points_px as UV pairs.",
+    "Surface coordinates use its local XY plane with Z equal to zero.",
+    "The final three views are reserved for a separate pixel check.",
+    "Pixel checks do not prove a real position accuracy bound."
+  ],
+  "views": []
+}

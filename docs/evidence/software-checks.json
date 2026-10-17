@@ -1,0 +1,114 @@
+{
+  "project": "Portiva",
+  "date": "2026-10-16",
+  "scope": "Host code, artificial geometry and dedicated Android emulator only",
+  "core": {
+    "passed": true,
+    "scope": "Portable host software checks; no physical hardware",
+    "tests": [
+      {
+        "test": "TrackerChecks",
+        "result": "10 Java association checks passed, including explicit identity counterexample; not Grandma identity validation."
+      },
+      {
+        "test": "NavigationChecks",
+        "result": "78 Java grid/workflow checks passed; geometry/validity inputs remain supplied, not home validation."
+      },
+      {
+        "test": "IntegratedNavigationChecks",
+        "result": "12 integrated navigation scenarios passed (5 completed virtual missions including round trip, 7 fault holds); no physical robot test."
+      },
+      {
+        "test": "PoseTransformChecks",
+        "result": "9 camera/base transform checks passed; extrinsic survey and position bound still required."
+      },
+      {
+        "test": "TelemetryChecks",
+        "result": "77 Java telemetry/button event assertions passed; no actuation path."
+      },
+      {
+        "test": "FollowControllerChecks",
+        "result": "628 follow-controller assertions passed; 11 fault holds. False identity input remains an explicit counterexample."
+      },
+      {
+        "test": "MissionDemoRunner",
+        "result": "{\"scope\":\"Shared Android/host mission simulation; virtual person/pose/obstacles, swept rectangle and shared request coordinator; assumed drive. No physical autonomy\",\"passed\":true,\"assertions\":4974,\"outbound_steps\":2379,\"return_steps\":2574,\"physical_motion_enabled\":false}"
+      },
+      {
+        "test": "RecipientChecks",
+        "result": "50 recipient inbox and loopback HTTP checks passed; requests queue only, no real phones or motor actions."
+      },
+      {
+        "test": "RectangleChecks",
+        "result": "168 Java rectangle path/bounds checks passed; 1000 poses exported for independent OpenCV verification."
+      },
+      {
+        "test": "CoordinatorChecks",
+        "result": "15 shared request coordinator checks passed; physical outputs remain zero."
+      },
+      {
+        "test": "control_core_checks",
+        "result": "4029 C++ packet/watchdog/fault checks passed; no motor hardware test."
+      },
+      {
+        "test": "sensor_core_checks",
+        "result": "30 sonar timing/timeout/rollover/button assertions passed; not acoustic or electrical validation."
+      },
+      {
+        "test": "telemetry_core_checks",
+        "result": "69 telemetry framing/checksum/bounds assertions passed; not physical UART validation."
+      },
+      {
+        "test": "test_map_tools.py",
+        "result": "{\"scope\": \"Offline map schema and synthetic route only\", \"passed\": true, \"assertions\": 17, \"physical_home_tested\": false, \"motion_enabled\": false}"
+      },
+      {
+        "test": "test_natural_calibration.py",
+        "result": "Natural-surface calibration: actual fit passed on procedural images; 4 invalid inputs rejected. No real position bound claimed."
+      },
+      {
+        "test": "test_camera_bench.py",
+        "result": "{\"scope\": \"Software fixtures only; no physical camera, Wi-Fi or phone was tested\", \"assertions\": 23, \"passed\": true, \"physical_camera_tested\": false}"
+      },
+      {
+        "test": "test_rectangle_java.py",
+        "result": "{'passed': True, 'scope': 'Java Android planner versus independent native OpenCV on artificial geometry', 'random_pose_checks': 1000, 'continuous_route_samples': 1558, 'route_states': 162, 'real_house_tested': False, 'motion_enabled': False}"
+      }
+    ],
+    "motion_enabled": false
+  },
+  "native_emulator": {
+    "first_inference_ms": "1250",
+    "follow_fault_hold": "true",
+    "grid_route": "true",
+    "mission_demo_round_trip": "true",
+    "mission_ui_opened": "true",
+    "mission_ui_screenshot": "true",
+    "motion_enabled": "false",
+    "person_count": "3",
+    "procedural_pose_error_m": "0.009836311971195959",
+    "result": "passed",
+    "scope": "Android native detector, procedural localization and reference controller checks; not Redmi, Grandma, house or motors",
+    "warm_median_ms": "1248"
+  },
+  "tested_apk_sha256": "85b4474c3b72424ced97dafd8407a1307eb12ab889611423149ab881990c590e",
+  "current_apk_tested": true,
+  "firmware_compile_passed": {
+    "Uno": true,
+    "Camera": true
+  },
+  "rectangle": {
+    "passed": true,
+    "scope": "Java Android planner versus independent native OpenCV on artificial geometry",
+    "random_pose_checks": 1000,
+    "continuous_route_samples": 1558,
+    "route_states": 162,
+    "real_house_tested": false,
+    "motion_enabled": false
+  },
+  "real_phone_tested": false,
+  "real_house_tested": false,
+  "motion_enabled": false,
+  "clean_emulator_ui_verified": false,
+  "full_bom_ready": false
+}

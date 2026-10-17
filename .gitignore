@@ -20,13 +20,12 @@
 !/.gitattributes
 !/.github/workflows/software-checks.yml
 !/.gitignore
-!/Portiva Project Guide.docx
-!/Portiva-Software-Guide.md
 !/Portiva.ps1
 !/README.md
 !/Stage-1-Development-Kit.csv
 !/THIRD_PARTY_NOTICES.md
 !/docs/ARCHITECTURE.md
+!/docs/SOFTWARE.md
 !/docs/START-BUILDING.md
 !/docs/TESTING.md
 !/docs/assets/portiva-banner.svg

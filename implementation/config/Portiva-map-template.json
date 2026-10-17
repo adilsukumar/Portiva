@@ -1,0 +1,11 @@
+{
+  "schema": "portiva-map-v1",
+  "kind": "draft",
+  "cell_m": 0.0125,
+  "grid": [],
+  "footprint_m": [0.390, 0.410],
+  "padding_m": 0.055,
+  "rooms": {},
+  "motion_enabled": false,
+  "notes": ["Not usable until the actual free space and destinations are surveyed.", "Grid uses dots for free space and # for obstacles. Rows increase along map y.", "Room cell is integer x,y. heading_index is 0 to7 in45 degree steps from positive x.", "Body dimensions and padding are provisional. A map cannot enable motors or qualify live camera pose."]
+}

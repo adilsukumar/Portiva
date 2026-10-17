@@ -1,0 +1,36 @@
+{
+  "downloads": [
+    {
+      "name": "onnxruntime-android-1.22.0.aar",
+      "url": "https://repo.maven.apache.org/maven2/com/microsoft/onnxruntime/onnxruntime-android/1.22.0/onnxruntime-android-1.22.0.aar",
+      "bytes": 28515295,
+      "sha256": "04a4617a9c797cf49225595e45b5546081cb34c86ac817581141577d3b7dbfe2"
+    },
+    {
+      "name": "opencv-4.11.0.aar",
+      "url": "https://repo.maven.apache.org/maven2/org/opencv/opencv/4.11.0/opencv-4.11.0.aar",
+      "bytes": 115008930,
+      "sha256": "c21ae9c7bb88795e7abefac74b83c458022298248b4ee72fbf62df7f085dbda7"
+    },
+    {
+      "name": "yolo11n.pt",
+      "url": "https://github.com/ultralytics/assets/releases/download/v8.3.0/yolo11n.pt",
+      "bytes": 5613764,
+      "sha256": "0ebbc80d4a7680d14987a577cd21342b65ecfd94632bd9a8da63ae6417644ee1"
+    },
+    {
+      "name": "bus.jpg",
+      "url": "https://raw.githubusercontent.com/ultralytics/ultralytics/main/ultralytics/assets/bus.jpg",
+      "bytes": 137419,
+      "sha256": "c02019c4979c191eb739ddd944445ef408dad5679acab6fd520ef9d434bfbc63"
+    }
+  ],
+  "model_export": {
+    "ultralytics": "8.3.221",
+    "imgsz": 320,
+    "opset": 13,
+    "dynamic": false,
+    "simplify": false
+  },
+  "note": "Hashes identify the dependency bytes used locally. Exported ONNX metadata may differ across export environments; retest any rebuild."
+}
