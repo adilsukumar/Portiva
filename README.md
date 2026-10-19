@@ -1,36 +1,23 @@
-<div align="center">
+<p><picture><source media="(max-width: 600px)" srcset="docs/assets/readme/hero-mobile.svg"/><img src="docs/assets/readme/hero.svg" width="100%" alt="Portiva: a home-robot development project for following, carrying and room-to-room delivery. Physical motion is disabled. Concept illustration."/></picture></p>
 
-![Portiva — a helping hand that moves with you](docs/assets/portiva-banner.svg)
+<p align="center"><a href="#the-everyday-flow">Mission</a> · <a href="#try-it-without-buying-anything">Try the core</a> · <a href="#the-software-stack">Software</a> · <a href="#what-the-tests-establish">Evidence</a> · <a href="#build-guides">Build guides</a></p>
 
 **A home robot designed to follow a person, carry everyday items, and deliver them across rooms.**
 
-[![Software checks](https://github.com/adilsukumar/Portiva/actions/workflows/software-checks.yml/badge.svg)](https://github.com/adilsukumar/Portiva/actions/workflows/software-checks.yml)
-![Stage](https://img.shields.io/badge/stage-development-ffb477?style=flat-square)
-![Runtime](https://img.shields.io/badge/runtime-Android_%2B_Arduino-77ddbd?style=flat-square)
-![Motion](https://img.shields.io/badge/physical_motion-disabled-d0d9e2?style=flat-square)
-
-[Start building](docs/START-BUILDING.md) · [Architecture](docs/ARCHITECTURE.md) · [Software guide](docs/SOFTWARE.md) · [Tests](docs/TESTING.md)
-
-</div>
-
-## Built for the trips that add up
+## <img src="docs/assets/readme/icon-deliver.svg" width="30" height="30" alt=""/> Built for the trips that add up
 
 Repeated carrying trips around a home can take time and effort. Portiva explores how a small mobile trolley could keep everyday items within reach and deliver them between registered rooms.
 
 The goal is a tall, accessible carrying companion. It should stay nearby while she walks, stop for loading, take items to a selected room and return after unloading. The design is growing into a household delivery robot, with no floor tape or installed navigation markers.
 
-> **Current release:** executable development software with an Android demo, shared mission controllers, camera tools and board firmware. Simulated workflows pass. Real autonomous use, the 5 kg assembly and the complete ₹3,000 budget are **not yet validated**. Motor outputs remain locked at zero.
+<p><picture><source media="(max-width: 600px)" srcset="docs/assets/readme/status-mobile.svg"/><img src="docs/assets/readme/status.svg" width="100%" alt="Executable development software and simulated workflows. Complete assembly and real autonomous operation remain unvalidated; motor outputs stay locked at zero."/></picture></p>
 
-## The everyday flow
+## <img src="docs/assets/readme/icon-mission.svg" width="30" height="30" alt=""/> The everyday flow
 
-```mermaid
-flowchart LR
-    A[Follow] --> B[Stop and load]
-    B --> C[Choose a room]
-    C --> D[Deliver]
-    D --> E[Confirm unloaded]
-    E --> F[Return to departure point]
-```
+<p><picture><source media="(max-width: 600px)" srcset="docs/assets/readme/mission-mobile.svg"/><img src="docs/assets/readme/mission.svg" width="100%" alt="Intended mission: follow, stop and load, choose a room, deliver, confirm unloaded and return. Not a claim of validated physical operation."/></picture></p>
+
+<details>
+<summary><strong>Capability-by-capability implementation and physical-validation requirements</strong></summary>
 
 | Capability | Implemented software | Still needed for physical use |
 |---|---|---|
@@ -41,7 +28,11 @@ flowchart LR
 | Use physical buttons | FOLLOW/SEND telemetry events enter the inbox | Actual wiring and switch trials |
 | Control the base | Uno protocol, watchdog and sensor firmware | Selected drive hardware, stop wiring and commissioning |
 
-## Try it without buying anything
+</details>
+
+## <img src="docs/assets/readme/icon-terminal.svg" width="30" height="30" alt=""/> Try it without buying anything
+
+<p><picture><source media="(max-width: 600px)" srcset="docs/assets/readme/environment-mobile.svg"/><img src="docs/assets/readme/environment.svg" width="100%" alt="Portable core: Python 3.11+, JDK 17+, C++17. No phone, robot or Android SDK required."/></picture></p>
 
 Python 3.11+, JDK 17+ and a C++17 compiler are required for the portable core tests. They need no Android SDK, model download, phone or robot.
 
@@ -62,24 +53,13 @@ python portiva.py doctor     # Check local development dependencies
 
 `doctor` may report missing Android/model tools on a fresh clone. The core tests do not need those tools. Python and a PC are for development; the intended deployed processor is the owned Redmi.
 
-## The software stack
+## <img src="docs/assets/readme/icon-stack.svg" width="30" height="30" alt=""/> The software stack
 
-```mermaid
-flowchart TB
-    Camera[ESP32-CAM / local Wi-Fi] --> Android[Android vision and pose candidates]
-    App[App / recipient browser / robot buttons] --> Inbox[Authenticated requests]
-    Inbox --> Mission[Mission coordinator]
-    Android -. live measured adapter pending .-> Mission
-    Mission --> Follow[Following controller]
-    Mission --> Planner[Rectangle planner and navigator]
-    Follow --> Guard[Reference velocity / physical output disabled]
-    Planner --> Guard
-    Uno[Uno sensors and watchdog] --> Android
-```
+<p><picture><source media="(max-width: 600px)" srcset="docs/assets/readme/architecture-mobile.svg"/><img src="docs/assets/readme/architecture.svg" width="100%" alt="Android vision and pose candidates, mission coordinator, planner and controllers, and Uno telemetry. Live measured adapter pending; physical output disabled."/></picture></p>
 
 The planned stack reuses an Arduino Uno, MPU6050 and Android phone. HC-05, relays and a GNSS module are available, but they are not substitutes for indoor position sensing. Phone radio strength does not identify a room or measure a reliable following distance.
 
-## Build the Android bench app
+## <img src="docs/assets/readme/icon-code.svg" width="30" height="30" alt=""/> Build the Android bench app
 
 Install Android SDK platform 35 and build-tools 35.0.0. Set `ANDROID_SDK_ROOT` and `JAVA_HOME` if they are not discoverable. Fetch the pinned upstream dependencies and export the model in a development environment:
 
@@ -94,7 +74,7 @@ This creates `implementation/Portiva-Bench.apk`. The APK supports Android 8/API 
 
 Read the [software guide](docs/SOFTWARE.md) and [board setup](docs/SOFTWARE.md) before using the camera bench. Generate private credentials locally; never publish populated `secrets.h` or signing keys. Third-party model and runtime terms are listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
-## What the tests establish
+## <img src="docs/assets/readme/icon-test.svg" width="30" height="30" alt=""/> What the tests establish
 
 | Evidence | Result | Scope |
 |---|---:|---|
@@ -107,13 +87,18 @@ Read the [software guide](docs/SOFTWARE.md) and [board setup](docs/SOFTWARE.md) 
 
 These counts are **not success percentages or thousands of delivery trips**. The detector and procedural localizer have also run on an Android emulator. Emulator performance does not establish Redmi performance. See [testing notes](docs/TESTING.md) for current native results and limitations.
 
-## Ready to start the hardware?
+## <img src="docs/assets/readme/icon-tools.svg" width="30" height="30" alt=""/> Ready to start the hardware?
 
 **Yes: the camera development stage is a concrete first step.** The listed camera and programmer subtotal is **₹1,011**, before shipping, cable and any additional power supply. [See the two-item kit, seller links and exact bench steps](docs/START-BUILDING.md).
 
 The entire moving trolley is not yet a checkout-ready ₹3,000 build. The aim is a 5 kg payload, tall accessible shelves and four wheels within an 18-inch envelope. Rack/base fit, load distribution, motor capacity, battery/charger and real stopping tests still need work. Buying this first camera kit is research spending, not a guarantee that all remaining parts will fit the budget.
 
-## Project layout
+## <img src="docs/assets/readme/icon-docs.svg" width="30" height="30" alt=""/> Build guides
+
+<p align="center"><a href="docs/START-BUILDING.md"><img src="docs/assets/readme/doc-0.svg" width="430" alt="Start building: The first bench stage"/></a> <a href="docs/ARCHITECTURE.md"><img src="docs/assets/readme/doc-1.svg" width="430" alt="Architecture: How the software fits together"/></a> <a href="docs/SOFTWARE.md"><img src="docs/assets/readme/doc-2.svg" width="430" alt="Software guide: Android, firmware and setup"/></a> <a href="docs/TESTING.md"><img src="docs/assets/readme/doc-3.svg" width="430" alt="Tests & evidence: What the checks do and do not prove"/></a></p>
+
+<details>
+<summary><strong>Project layout and repository hygiene</strong></summary>
 
 ```text
 portiva.py                  One Python entry point
@@ -129,3 +114,9 @@ docs/                       Architecture, testing and first purchase guide
 ```
 
 The internal package retains an earlier working name; the product is **Portiva**. Historical experiments, house pictures, caches, downloaded toolchains, generated APKs and private configuration are excluded from this repository. Family-specific documents and household data stay in the private development workspace.
+
+</details>
+
+<p><picture><source media="(max-width: 600px)" srcset="docs/assets/readme/closing-mobile.svg"/><img src="docs/assets/readme/closing.svg" width="100%" alt="Portiva: built for the trips that add up. Working toward less carrying, one tested step at a time. Built by Adil Sukumar."/></picture></p>
+
+<p align="center"><a href="https://github.com/adilsukumar/Portiva/issues">Discuss the build</a> · <a href="docs/TESTING.md">Inspect the evidence</a> · <a href="https://www.adilsukumar.xyz/">Meet the builder</a></p>
