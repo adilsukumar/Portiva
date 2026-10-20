@@ -14,6 +14,7 @@ public final class MainActivity extends Activity {
     LinearLayout column=new LinearLayout(this);column.setPadding(18,18,18,18);column.setOrientation(1);
     TextView title=new TextView(this);title.setText("Portiva bench preview - motion disabled");title.setTextSize(20);column.addView(title);
     TextView note=new TextView(this);note.setText("This is a vision prototype, not a finished autonomous trolley. Tap the intended person. Similar people or loss require selection again.");column.addView(note);
+    Button onboard=new Button(this);onboard.setText("Open phone's own camera bench (new design)");onboard.setOnClickListener(v->{stopService(new Intent(this,VisionService.class));startActivity(new Intent(this,PhoneCameraActivity.class));});column.addView(onboard);
     ip=new EditText(this);ip.setHint("Robot URL: http://192.168.4.1");ip.setText("http://192.168.4.1");column.addView(ip);
     token=new EditText(this);token.setHint("Local pairing token (32+ characters)");token.setInputType(129);column.addView(token);
     Button demo=new Button(this);demo.setText("Open offline mission demo (no robot needed)");demo.setOnClickListener(v->{stopService(new Intent(this,VisionService.class));startActivity(new Intent(this,DemoActivity.class));});column.addView(demo);

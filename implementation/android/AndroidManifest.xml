@@ -1,6 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="in.rollingtable.prototype">
   <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="35"/>
   <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.CAMERA"/>
+  <uses-feature android:name="android.hardware.camera" android:required="false"/>
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
   <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
   <uses-permission android:name="android.permission.WAKE_LOCK"/>
@@ -14,6 +16,7 @@
     </activity>
     <service android:name=".VisionService" android:exported="false" android:foregroundServiceType="connectedDevice"/>
     <activity android:name=".DemoActivity" android:exported="false"/>
+    <activity android:name=".PhoneCameraActivity" android:exported="false"/>
     <service android:name=".RequestService" android:exported="false" android:foregroundServiceType="connectedDevice"/>
   </application>
 </manifest>

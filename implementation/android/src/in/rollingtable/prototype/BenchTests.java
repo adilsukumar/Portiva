@@ -50,6 +50,34 @@ public final class BenchTests extends Instrumentation {
       steps=0;while(steps++<5000&&(demo.state()!=MissionController.State.ARRIVED||demo.speed>1e-6||Math.abs(demo.angular)>1e-6))demo.step();
       if(steps>=5000||Math.hypot(demo.x-.6,demo.y-1.005)>.05||demo.physicalLeftPwm()!=0||demo.physicalRightPwm()!=0)throw new AssertionError("demo round trip");
       out.putBoolean("mission_demo_round_trip",true);
+      java.util.concurrent.CountDownLatch cameraFrame=new java.util.concurrent.CountDownLatch(1);
+      java.util.concurrent.CountDownLatch cameraClosed=new java.util.concurrent.CountDownLatch(1);
+      java.util.concurrent.atomic.AtomicReference<byte[]> localJpeg=new java.util.concurrent.atomic.AtomicReference<>();
+      java.util.concurrent.atomic.AtomicReference<String> cameraError=new java.util.concurrent.atomic.AtomicReference<>();
+      PhoneCamera local=new PhoneCamera(getTargetContext(),new PhoneCamera.Listener(){
+        public void frame(byte[] jpeg,long request,long received){localJpeg.set(jpeg);cameraFrame.countDown();}
+        public void error(String reason){cameraError.set(reason);cameraFrame.countDown();}
+        public void stopped(){cameraClosed.countDown();}
+      });
+      try{local.start();if(!cameraFrame.await(20,java.util.concurrent.TimeUnit.SECONDS))throw new AssertionError("Synthetic Camera2 frame timeout");}
+      finally{local.close();}
+      if(!cameraClosed.await(5,java.util.concurrent.TimeUnit.SECONDS))throw new AssertionError("Camera close timeout");
+      if(cameraError.get()!=null)throw new AssertionError(cameraError.get());
+      byte[] captured=localJpeg.get();if(captured==null)throw new AssertionError("Missing synthetic camera JPEG");
+      Bitmap localImage=BitmapFactory.decodeByteArray(captured,0,captured.length);
+      if(localImage==null||localImage.getWidth()<160||localImage.getHeight()<120)throw new AssertionError("Local camera decode");
+      d.detect(localImage);out.putBoolean("phone_camera_synthetic_capture",true);out.putBoolean("phone_camera_detector_on_captured_frame",true);
+      out.putInt("phone_camera_width",localImage.getWidth());out.putInt("phone_camera_height",localImage.getHeight());localImage.recycle();
+      android.content.Intent cameraIntent=new android.content.Intent(getTargetContext(),PhoneCameraActivity.class);cameraIntent.addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK);
+      PhoneCameraActivity cameraActivity=(PhoneCameraActivity)startActivitySync(cameraIntent);waitForIdleSync();
+      runOnMainSync(()->cameraActivity.startCamera());long cameraDeadline=SystemClock.elapsedRealtime()+15000;
+      while(cameraActivity.frameCount()<1&&SystemClock.elapsedRealtime()<cameraDeadline)SystemClock.sleep(100);
+      if(cameraActivity.frameCount()<1)throw new AssertionError("Camera activity did not process a synthetic frame");
+      runOnMainSync(()->cameraActivity.startCamera());cameraDeadline=SystemClock.elapsedRealtime()+15000;
+      while(cameraActivity.frameCount()<1&&SystemClock.elapsedRealtime()<cameraDeadline)SystemClock.sleep(100);
+      if(cameraActivity.frameCount()<1)throw new AssertionError("Camera activity restart failed");
+      runOnMainSync(()->cameraActivity.finish());out.putBoolean("phone_camera_activity_capture_restart",true);
+      out.putBoolean("phone_camera_activity_opened",true);
       android.content.Intent demoIntent=new android.content.Intent(getTargetContext(),DemoActivity.class);demoIntent.addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK);
       android.app.Activity demoActivity=startActivitySync(demoIntent);waitForIdleSync();SystemClock.sleep(250);
       Bitmap screenshot=getUiAutomation().takeScreenshot();

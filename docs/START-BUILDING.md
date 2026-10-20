@@ -1,6 +1,10 @@
 # Start building Portiva
 
-**Yes: start with the camera development stage.** It gives you hardware to assemble and test without first buying the rack, motors and battery. This is a useful experiment, not a promise that the final trolley will work within ₹3,000.
+**Current direction, 20 October 2026: use the phone mounted on the trolley. Do not buy the separate camera kit below for this design.** Build Portiva Bench, open **Open phone's own camera bench (new design)** and start local capture after granting camera permission. It is a local detection bench with no robot connection. HC05 integration, live mission observations and the complete mechanical/power basket are unfinished. A complete purchase is not approved.
+
+## Earlier camera development stage
+
+The following separate-camera kit is retained as historical research. Its prices and setup are not a current purchase recommendation.
 
 Supplier pages checked on 16 October 2026:
 

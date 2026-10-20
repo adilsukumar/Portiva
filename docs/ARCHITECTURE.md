@@ -4,7 +4,7 @@ Portiva is a home carrying robot project. Its intended cycle is follow, stop for
 
 ```mermaid
 flowchart LR
-    Camera[ESP32-CAM] -->|local Wi-Fi pictures| Vision[Redmi: person detection and natural-feature pose]
+    Camera[Mounted phone rear camera] -->|local Camera2 capture bench| Vision[Phone: person detection and natural-feature pose candidate]
     Buttons[Uno FOLLOW / SEND buttons] --> Telemetry[Sensor telemetry]
     Telemetry --> Inbox[Authenticated request inbox]
     Phone[Recipient phone browser] --> Inbox
@@ -29,7 +29,9 @@ flowchart LR
 
 `Detector` runs YOLO11n using ONNX Runtime. `TargetTracker` associates a selected appearance and holds on ambiguity or staleness. Appearance is not personal identity. `PlanarLocalizer` estimates candidate camera pose from measured natural wall features using OpenCV ORB/PnP. It is not automatic SLAM. The camera/base transform utility handles surveyed mounting geometry.
 
-Uno firmware reads sensor information and contains a packet watchdog. ESP32-CAM firmware supplies authenticated health, images, read-only telemetry and STOP. Neither provides an enabled driving system in this release.
+`PhoneCamera` captures one rear-camera JPEG at a time and waits for its listener before requesting another frame. `PhoneCameraActivity` runs local detection, reports timings and stops the session on pause. It has no motor or Bluetooth transport. Capture restart and resource closure need native tests and physical device checks.
+
+Uno firmware reads sensor information and contains a packet watchdog. The planned HC05 Bluetooth Classic serial adapter is unfinished. ESP32-CAM firmware is retained as a legacy bench; it is not a purchase dependency of the phone-mounted architecture. No enabled physical driving system is provided.
 
 ## Work that needs hardware and measured data
 

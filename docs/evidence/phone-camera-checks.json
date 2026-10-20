@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-20",
+  "scope": "Software and synthetic Android camera only; no physical device or robot",
+  "apk_sha256": "4cb181f98d14e553ce597d5a6431415ca58e10911031cfccbc9b70bd08e49319",
+  "passed": true,
+  "camera2_synthetic_capture": true,
+  "camera2_dimensions": [
+    640,
+    480
+  ],
+  "detector_on_camera_frame": true,
+  "camera_activity_capture_restart": true,
+  "virtual_round_trip": true,
+  "public_photo_person_count": 3,
+  "public_photo_warm_median_ms": 1400,
+  "clean_ui_verified": false,
+  "system_ui_dialog_observed": true,
+  "hc05_implemented": false,
+  "physical_motion_enabled": false,
+  "full_purchase_approved": false
+}

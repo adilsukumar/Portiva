@@ -48,6 +48,10 @@ The main app can review a message without executing it. The offline demo can **A
 
 ## Prepare a camera bench
 
+The current architecture uses the Android phone's own rear camera. In Portiva Bench, choose **Open phone's own camera bench (new design)**, then **Start phone camera**. Grant camera permission when requested. Frames are processed locally in memory. The screen reports detections and inference/request-to-result timing. Stop the camera or leave the activity to close capture. This bench has no robot connection and cannot move wheels. Raw image orientation, calibration, device speed and thermal behaviour remain physical tests.
+
+The planned HC05 connection to the Uno is not implemented. Mounting the phone does not enable autonomous following or delivery. The following ESP32 setup is retained for the older camera research and is not required for the current design.
+
 Use an actual AI-Thinker-compatible ESP32-CAM with OV2640 and working PSRAM, a matching programmer and documented regulated power. Verify the board's pin map before connecting it. The initial camera-only bench needs no drive hardware.
 
 ```bash

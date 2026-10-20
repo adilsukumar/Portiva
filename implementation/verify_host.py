@@ -1,5 +1,7 @@
 """Re-run executable host checks; summarize virtual-device logs without inventing hardware evidence."""
 from pathlib import Path
+from datetime import datetime
+from zoneinfo import ZoneInfo
 import subprocess, json, hashlib, re, sys
 from toolchain import java_tools,cpp_compiler,exe
 
@@ -64,7 +66,7 @@ def main():
         content=log.read_text(encoding='utf-8-sig') if log.exists() else ''
         firmware[name]={'compile_passed':'Sketch uses ' in content and 'Error during build' not in content,
                         'log':str(log),'flashed':False}
-    report={'date':'2026-10-16','scope':'Executable software and procedural/virtual-device tests; no physical robot or Redmi tests',
+    report={'date':datetime.now(ZoneInfo('Asia/Kolkata')).date().isoformat(),'scope':'Executable software and procedural/virtual-device tests; no physical robot or Redmi tests',
             'host_checks':{'tracker':tracker,'navigation':navigation,'integrated_navigation':integrated,'camera_base_transform':transform,'controller':controller,'sensor_core':sensors,'telemetry_core':telemetry,'android_telemetry':android_telemetry,'follow_controller':following,'recipient':recipient,'rectangle_navigation':rectangle,'request_coordinator':coordinator},
             'android_virtual_device':fields,'firmware':firmware,
             'apk_sha256':apk_hash,
