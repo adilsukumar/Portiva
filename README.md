@@ -12,6 +12,8 @@ The goal is a tall, accessible carrying companion. It should stay nearby while s
 
 <p><picture><source media="(max-width: 600px)" srcset="docs/assets/readme/status-mobile.svg"/><img src="docs/assets/readme/status.svg" width="100%" alt="Executable development software and simulated workflows. Complete assembly and real autonomous operation remain unvalidated; motor outputs stay locked at zero."/></picture></p>
 
+<a id="the-everyday-flow"></a>
+
 ## <img src="docs/assets/readme/icon-mission.svg" width="30" height="30" alt=""/> The everyday flow
 
 <p><picture><source media="(max-width: 600px)" srcset="docs/assets/readme/mission-mobile.svg"/><img src="docs/assets/readme/mission.svg" width="100%" alt="Intended mission: follow, stop and load, choose a room, deliver, confirm unloaded and return. Not a claim of validated physical operation."/></picture></p>
@@ -29,6 +31,8 @@ The goal is a tall, accessible carrying companion. It should stay nearby while s
 | Control the base | Uno protocol, watchdog and sensor firmware | Selected drive hardware, stop wiring and commissioning |
 
 </details>
+
+<a id="try-it-without-buying-anything"></a>
 
 ## <img src="docs/assets/readme/icon-terminal.svg" width="30" height="30" alt=""/> Try it without buying anything
 
@@ -53,6 +57,8 @@ python portiva.py doctor     # Check local development dependencies
 
 `doctor` may report missing Android/model tools on a fresh clone. The core tests do not need those tools. Python and a PC are for development; the intended deployed processor is the owned Redmi.
 
+<a id="the-software-stack"></a>
+
 ## <img src="docs/assets/readme/icon-stack.svg" width="30" height="30" alt=""/> The software stack
 
 <p><picture><source media="(max-width: 600px)" srcset="docs/assets/readme/architecture-mobile.svg"/><img src="docs/assets/readme/architecture.svg" width="100%" alt="Android vision and pose candidates, mission coordinator, planner and controllers, and Uno telemetry. Live measured adapter pending; physical output disabled."/></picture></p>
@@ -74,6 +80,8 @@ This creates `implementation/Portiva-Bench.apk`. The APK supports Android 8/API 
 
 Read the [software guide](docs/SOFTWARE.md) before starting the phone camera bench. Frames stay in memory, and capture stops when the activity leaves the foreground. There is no robot connection. Never publish private credentials or signing keys. Third-party model and runtime terms are listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
+<a id="what-the-tests-establish"></a>
+
 ## <img src="docs/assets/readme/icon-test.svg" width="30" height="30" alt=""/> What the tests establish
 
 | Evidence | Result | Scope |
@@ -92,6 +100,8 @@ These counts are **not success percentages or thousands of delivery trips**. The
 **Use the mounted phone camera first.** Portiva Bench now includes a local rear-camera detection screen. Synthetic Camera2 capture, detector use and activity restart passed on the tested APK. HC05 and physical mission integration remain unfinished. The separate camera kit is historical; do not buy it for this architecture. [See the current bench steps](docs/START-BUILDING.md).
 
 The entire moving trolley is not yet a checkout-ready ₹3,000 build. The aim is a 5 kg payload, tall accessible shelves and four wheels within an 18-inch envelope. Rack/base fit, load distribution, motor capacity, battery/charger and real stopping tests still need work. Mounting an existing phone reduces hardware purchases, but it does not establish a complete cap-compliant assembly.
+
+<a id="build-guides"></a>
 
 ## <img src="docs/assets/readme/icon-docs.svg" width="30" height="30" alt=""/> Build guides
 
